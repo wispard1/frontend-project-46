@@ -12,6 +12,12 @@ jobs:
         steps:
         - uses: actions/checkout@v4
 
+        - name: Cache node modules
+          uses: actions/cache@v3
+          with:
+            path: node_modules
+            key: node_modules
+
         - name: SonarQube Scan
           uses: sonarsource/sonarcloud-github-action@v4.0.0
           env: 
