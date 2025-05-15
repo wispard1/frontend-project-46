@@ -1,11 +1,9 @@
 import fs from 'fs';
-import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import gendiff from '../../src/index.js';
+import { dirname, path } from 'path';
 import file1 from '../file1.json';
 import file2 from '../file2.json';
-import { buildDiff } from '../../src/index.js';
+import { buildDiff, gendiff } from '../../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

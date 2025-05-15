@@ -3,7 +3,7 @@ import fs from 'fs';
 import parser from './parser.js';
 
 const buildDiff = (obj1, obj2, depth = 0) => {
-  const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort();
+  const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort((a, b) => a.localeCompare(b));
 
   const space = 4;
   const indent = ' '.repeat(depth * space);
@@ -16,19 +16,19 @@ const buildDiff = (obj1, obj2, depth = 0) => {
     const value2 = obj2[key];
 
     if (typeof value1 === 'object' && value1 !== null && typeof value2 === 'object' && value2 !== null) {
-      const nestedDiff = gendiff(value1, value2, depth + 1);
+      const nestedDiff = buildDiff(value1, value2, depth + 1);
 
       return `${sameIndent}${key}: ${nestedDiff}`;
     }
 
     if (typeof value1 === 'object' && value1 !== null && (typeof value2 !== 'object' || value2 === null)) {
-      const nestedDiff = gendiff(value1, {}, depth + 1);
+      const nestedDiff = buildDiff(value1, {}, depth + 1);
 
       return `${changeIndent}- ${key}: ${nestedDiff}\n${changeIndent}+ ${key}: ${value2}`;
     }
 
     if (typeof value2 === 'object' && value2 !== null && (typeof value1 !== 'object' || value1 === null)) {
-      const nestedDiff = gendiff({}, value2, depth + 1);
+      const nestedDiff = buildDiff({}, value2, depth + 1);
 
       return `${changeIndent}- ${key}: ${value1}\n${changeIndent}+ ${key}: ${nestedDiff}`;
     }
@@ -63,5 +63,3 @@ export default function gendiff(filepath1, filepath2) {
 }
 
 export { buildDiff };
-
-
