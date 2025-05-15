@@ -10,7 +10,7 @@ export default function parser(data, ext) {
         return parse(data);
 
       default:
-        throw new Error(`Unsupported file extension ${ext}`);
+        throw new Error(`Unsupported file extension '${ext}'`);
     }
   } catch (error) {
     throw new Error(`Error parsing ${ext} file: ${error.message}`);
