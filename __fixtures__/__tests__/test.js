@@ -1,9 +1,10 @@
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { dirname, path } from 'path';
+import { dirname } from 'path';
+import path from 'path';
 import file1 from '../file1.json';
 import file2 from '../file2.json';
-import { buildDiff, gendiff } from '../../src/index.js';
+import gendiff, { buildDiff } from '../../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
