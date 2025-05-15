@@ -1,0 +1,1 @@
+export { default as gendiff } from './src/index.js'
