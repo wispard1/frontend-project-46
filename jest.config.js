@@ -2,10 +2,6 @@ export default {
   roots: ['<rootDir>'],
   testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
   testEnvironment: 'node',
-  extensionsToTreatAsEsm: ['.js'],
-  moduleNameMapper: {
-    '\\.(json)$': '<rootDir>/__fixtures__/$1' 
-  },
   transform: {},
   collectCoverage: true,
   coverageReporters: ['json', 'lcov', 'text'],
