@@ -10,16 +10,22 @@ jobs:
     sonarqube:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v4
+        - name: Checkout code
+          uses: actions/checkout@v4
 
-        - name: Cache node modules
-          uses: actions/cache@v3
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
           with:
-            path: node_modules
-            key: node_modules
+            node-version: '18'
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: Run tests with coverage
+          run: npm run test:coverage
 
         - name: SonarQube Scan
-          uses: sonarsource/sonarcloud-github-action@v4.0.0
+          uses: sonarsource/sonarcloud-github-action@v4.0.1
           env: 
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
