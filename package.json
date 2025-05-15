@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage --coverageReporters=lcov --experimental-vm-modules",
+    "test:coverage": "jest --coverage --coverageReporters=lcov",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
