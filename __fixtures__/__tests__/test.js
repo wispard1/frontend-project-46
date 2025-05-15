@@ -27,7 +27,15 @@ test('test genDiff', () => {
 });
 
 test('test parse', () => {
-  expect(parser(file1, 'json')).toEqual(JSON.parse(file1));
-  expect(parser(file1, 'yml')).toEqual(parse(file1));
-  expect(parser(file1, 'txt')).toEqual(`Unsupported file extension 'txt'`);
-})
+  const file1Str = fs.readFileSync(path.resolve(__dirname, '../file1.json'), 'utf-8');
+  const file1Obj = JSON.parse(file1Str);
+
+  expect(parser(file1Str, 'json')).toEqual(file1Obj);
+
+  const fileYmlStr = fs.readFileSync(path.resolve(__dirname, '../file1.yml'), 'utf-8');
+  const fileYmlObj = parse(fileYmlStr);
+
+  expect(parser(fileYmlStr, 'yml')).toEqual(fileYmlObj);
+
+  expect(() => parser(file1Str, 'txt')).toThrow(`Unsupported file extension 'txt'`);
+});
