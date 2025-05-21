@@ -1,5 +1,5 @@
 {
-  "name": "my-gendiff",
+  "name": "@hexlet/code",
   "type": "module",
   "bin": {
     "my-gendiff": "./bin/index.js"
