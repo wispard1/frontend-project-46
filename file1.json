@@ -1,9 +1,0 @@
-{
-  "host": "localhost",
-  "port": 8080,
-  "server": {
-    "name": "example-server",
-    "timeout": 300
-  },
-  "debug": true
-}
