@@ -33,15 +33,15 @@ const plain = (obj1, obj2, ancestors = []) => {
     }
 
     if (!Object.hasOwn(obj2, key) && value1 !== undefined) {
-      return `Property ${path} was removed`;
+      return `Property '${path}' was removed`;
     }
 
     if (!Object.hasOwn(obj1, key) && value2 !== undefined) {
-      return `Property ${path} was added with value: ${formatValue(value2)}`;
+      return `Property '${path}' was added with value: ${formatValue(value2)}`;
     }
 
     if (value1 !== value2) {
-      return `Property ${path} was updated. From ${formatValue(value1)} to ${formatValue(value2)}`;
+      return `Property '${path}' was updated. From ${formatValue(value1)} to ${formatValue(value2)}`;
     }
 
     return '';
