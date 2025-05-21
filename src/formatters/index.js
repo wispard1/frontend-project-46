@@ -1,19 +1,24 @@
-import plain from '../formatters/plain.js';
-import stylish from '../formatters/stylish.js';
+import plain from './plain.js'
+import stylish from './stylish.js';
+import json from './json.js';
 
 const formatters = {
   stylish,
   plain,
+  json,
 };
 
 const formatData = (obj1, obj2, format = 'stylish') => {
-  const formatter = formatters[format];
-
-  if (!formatter) {
-    throw new Error(`Unknown format: ${format}`);
+  switch (format) {
+    case 'stylish':
+      return stylish(obj1, obj2);
+    case 'plain':
+      return plain(obj1, obj2);
+    case 'json':
+      return json(obj1, obj2);
+    default:
+      throw new Error(`Unknown format: ${format}`);
   }
-
-  return formatter(obj1, obj2);
 };
 
 export default formatData;
