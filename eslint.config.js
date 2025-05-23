@@ -3,6 +3,9 @@ import globals from 'globals';
 
 export default [
   {
+    ignores: ['coverage/**', 'coverage/'],
+  },
+  {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
       ecmaVersion: 2021,
@@ -18,6 +21,9 @@ export default [
     },
     plugins: {
       jest: pluginJest,
+    },
+    rules: {
+      'no-unused-expressions': 'off',
     },
   },
   {
