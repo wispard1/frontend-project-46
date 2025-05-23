@@ -1,2 +1,6 @@
+setup:
+  npm install
+
 lint:
-	npm run lint
+  npm test
+  npm run lint
