@@ -8,7 +8,7 @@
   "description": "[![Actions Status](https://github.com/wispard1/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/wispard1/frontend-project-46/actions)",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "jest --coverage --coverageReporters=lcov",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -27,7 +27,6 @@
   "homepage": "https://github.com/wispard1/frontend-project-46#readme",
   "dependencies": {
     "commander": "^13.1.0",
-    "js-yaml": "^4.1.0",
     "yaml": "^2.7.1"
   },
   "devDependencies": {
