@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import gendiff from '../src/index.js';
+import genDiff from '../index.js';
 
 const program = new Command();
 
@@ -12,7 +12,7 @@ program
   .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((file1, file2, { format }) => {
-    const result = gendiff(file1, file2, format);
+    const result = genDiff(file1, file2, format);
     console.log(result);
   });
 
