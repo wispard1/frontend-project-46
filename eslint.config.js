@@ -1,6 +1,5 @@
-import js from '@eslint/js';
-import globals from 'globals';
 import pluginJest from 'eslint-plugin-jest';
+import globals from 'globals';
 
 export default [
   {
@@ -9,8 +8,12 @@ export default [
       ecmaVersion: 2021,
       sourceType: 'module',
       globals: {
-        ...globals.browser,
-        ...pluginJest.environments.globals
+        ...Object.fromEntries(
+          Object.keys({
+            ...globals.browser,
+            ...pluginJest.environments.globals,
+          }).map((key) => [key, 'writable'])
+        ),
       },
     },
     plugins: {
@@ -19,8 +22,6 @@ export default [
   },
   {
     files: ['**/__tests__/**/*.{js,mjs,cjs}', '**/?(*.)+(spec|test).{js,mjs,cjs}'],
-    rules: {
-      // Можно добавить правила для тестов
-    },
+    rules: {},
   },
 ];
