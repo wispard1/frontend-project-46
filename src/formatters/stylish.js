@@ -35,10 +35,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     const value2 = obj2[key]
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 === 'object' &&
-      value2 !== null
+      typeof value1 === 'object'
+      && value1 !== null
+      && typeof value2 === 'object'
+      && value2 !== null
     ) {
       const nestedDiff = stylish(value1, value2, depth + 1)
 
@@ -46,41 +46,47 @@ const stylish = (obj1, obj2, depth = 0) => {
     }
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 !== 'object' &&
-      value2 !== undefined
+      typeof value1 === 'object'
+      && value1 !== null
+      && typeof value2 !== 'object'
+      && value2 !== undefined
     ) {
       const nestedDiff = formatValue(value1, depth)
 
       return [
-        //
         `${changeIndent}- ${key}: ${nestedDiff}`,
-        `${changeIndent}+ ${key}: ${formatValue(value2, depth)}`,
+        `${changeIndent}+ ${key}: ${formatValue(value2, depth)}`
       ]
     }
 
     if (
-      typeof value2 === 'object' &&
-      value2 !== null &&
-      typeof value1 !== 'object' &&
-      value1 !== undefined
+      typeof value2 === 'object'
+      && value2 !== null
+      && typeof value1 !== 'object'
+      && value1 !== undefined
     ) {
       const nestedDiff = formatValue(value2, depth)
 
       return [
-        //
         `${changeIndent}- ${key}: ${formatValue(value1, depth)}`,
-        `${changeIndent}+ ${key}: ${nestedDiff}`,
+        `${changeIndent}+ ${key}: ${nestedDiff}`
       ]
     }
 
-    if (!Object.hasOwn(obj2, key) && value1 !== undefined) {
+    if (
+      !Object.hasOwn(obj2, key)
+      && value1 !== undefined
+    ) {
       return `${changeIndent}- ${key}: ${formatValue(value1, depth)}`
     }
-    if (!Object.hasOwn(obj1, key) && value2 !== undefined) {
+
+    if (
+      !Object.hasOwn(obj1, key)
+      && value2 !== undefined
+    ) {
       return `${changeIndent}+ ${key}: ${formatValue(value2, depth)}`
     }
+
     if (value1 !== value2) {
       const lines = []
       if (value1 !== undefined) {
@@ -91,6 +97,7 @@ const stylish = (obj1, obj2, depth = 0) => {
       }
       return lines
     }
+
     return `${sameIndent}${key}: ${formatValue(value1, depth)}`
   })
 

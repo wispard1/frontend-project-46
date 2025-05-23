@@ -2,12 +2,6 @@ import plain from './plain.js'
 import stylish from './stylish.js'
 import json from './json.js'
 
-// const formatters = {
-//   stylish,
-//   plain,
-//   json,
-// }
-
 const formatData = (obj1, obj2, format = 'stylish') => {
   switch (format) {
     case 'stylish':
