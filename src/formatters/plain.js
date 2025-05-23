@@ -1,7 +1,7 @@
 const plain = (obj1, obj2, ancestors = []) => {
-  const isComplexValue = value => typeof value === 'object' && value !== null
+  const isComplexValue = (value) => typeof value === 'object' && value !== null
 
-  const formatValue = value => {
+  const formatValue = (value) => {
     if (isComplexValue(value)) {
       return '[complex value]'
     }
@@ -18,10 +18,10 @@ const plain = (obj1, obj2, ancestors = []) => {
   }
 
   const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-    (a, b) => a.localeCompare(b),
+    (a, b) => a.localeCompare(b)
   )
 
-  const lines = keys.flatMap(key => {
+  const lines = keys.flatMap((key) => {
     const value1 = obj1[key]
     const value2 = obj2[key]
     const path = buildPath(key, ancestors)
@@ -35,7 +35,7 @@ const plain = (obj1, obj2, ancestors = []) => {
       return plain(
         value1,
         value2,
-        [...ancestors, key].filter(line => line !== ''),
+        [...ancestors, key].filter((line) => line !== '')
       )
     }
 
@@ -54,7 +54,7 @@ const plain = (obj1, obj2, ancestors = []) => {
     return ''
   })
 
-  return lines.filter(line => line !== '').join('\n')
+  return lines.filter((line) => line !== '').join('\n')
 }
 
 export default plain

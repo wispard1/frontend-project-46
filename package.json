@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:coverage": "jest --coverage --coverageReporters=lcov",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=lcov",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "gendiff-json": "gendiff __fixtures__/file1.json __fixtures__/file2.json",

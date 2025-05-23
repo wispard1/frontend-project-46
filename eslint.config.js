@@ -17,10 +17,15 @@ export default [
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
       '@stylistic/indent': ['error', 2],
       'no-unused-expressions': 'off',
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'warn',
     },
   },
   {
-    files: ['**/__tests__/**/*.{js,mjs,cjs}', '**/?(*.)+(spec|test).{js,mjs,cjs}'],
+    files: [
+      '**/__tests__/**/*.{js,mjs,cjs}',
+      '**/?(*.)+(spec|test).{js,mjs,cjs}',
+    ],
     rules: {
       'jest/no-disabled-tests': 'warn',
       'jest/no-focused-tests': 'error',

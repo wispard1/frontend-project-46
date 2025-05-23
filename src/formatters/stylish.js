@@ -1,7 +1,7 @@
 const stylish = (obj1, obj2, depth = 0) => {
-  const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-    (a, b) => a.localeCompare(b),
-  )
+  const keys = [
+    ...new Set([...Object.keys(obj1), ...Object.keys(obj2)]),
+  ].sort((a, b) => a.localeCompare(b))
 
   const space = 4
   const indent = ' '.repeat(depth * space)
@@ -16,17 +16,21 @@ const stylish = (obj1, obj2, depth = 0) => {
       const nestedKeys = Object.keys(value)
       if (nestedKeys.length === 0) return '{}'
 
-      const nestedDiff = nestedKeys.map(key => {
+      const nestedDiff = nestedKeys.map((key) => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
-        return `${' '.repeat((currentDepth + 1) * space + 4)}${key}: ${nestedValue}`
+        return `${' '.repeat(
+          (currentDepth + 1) * space + 4
+        )}${key}: ${nestedValue}`
       })
-      return `{\n${nestedDiff.join('\n')}\n${' '.repeat((currentDepth + 1) * space)}}`
+      return `{\n${nestedDiff.join('\n')}\n${' '.repeat(
+        (currentDepth + 1) * space
+      )}}`
     }
     return String(value)
   }
 
-  const diff = keys.flatMap(key => {
+  const diff = keys.flatMap((key) => {
     const value1 = obj1[key]
     const value2 = obj2[key]
 
