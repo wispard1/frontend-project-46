@@ -8,6 +8,9 @@ export default {
   coverageDirectory: '<rootDir>/coverage',
   reporters: [
     'default',
-    ['jest-junit', { outputDirectory: '<rootDir>/reports', outputName: 'junit.xml' }]
-  ]
-};
+    [
+      'jest-junit',
+      { outputDirectory: '<rootDir>/reports', outputName: 'junit.xml' },
+    ],
+  ],
+}
