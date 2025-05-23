@@ -6,12 +6,12 @@ export default [
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       '@stylistic': stylistic,
-      jest: pluginJest,
+      'jest': pluginJest,
     },
     rules: {
       // Стилевые правила
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/brace-style': ['error', 'stroustrup'],
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],

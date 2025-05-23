@@ -20,11 +20,11 @@ const stylish = (obj1, obj2, depth = 0) => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
         return `${' '.repeat(
-          (currentDepth + 1) * space + 4
+          (currentDepth + 1) * space + 4,
         )}${key}: ${nestedValue}`
       })
       return `{\n${nestedDiff.join('\n')}\n${' '.repeat(
-        (currentDepth + 1) * space
+        (currentDepth + 1) * space,
       )}}`
     }
     return String(value)

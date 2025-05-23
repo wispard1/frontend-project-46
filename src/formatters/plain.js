@@ -18,7 +18,7 @@ const plain = (obj1, obj2, ancestors = []) => {
   }
 
   const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-    (a, b) => a.localeCompare(b)
+    (a, b) => a.localeCompare(b),
   )
 
   const lines = keys.flatMap((key) => {
@@ -35,7 +35,7 @@ const plain = (obj1, obj2, ancestors = []) => {
       return plain(
         value1,
         value2,
-        [...ancestors, key].filter((line) => line !== '')
+        [...ancestors, key].filter((line) => line !== ''),
       )
     }
 
