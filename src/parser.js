@@ -12,8 +12,7 @@ export default function parser(data, ext) {
       default:
         throw new Error(`Unsupported file extension '${ext}'`)
     }
-  }
-  catch (error) {
+  } catch (error) {
     throw new Error(`Error parsing ${ext} file: ${error.message}`)
   }
 }

@@ -18,22 +18,18 @@ const json = (obj1, obj2) => {
 
       if (!Object.hasOwn(obj2, key) && value1 !== undefined) {
         diff.removed.push({ key, value: value1 })
-      }
-      else if (!Object.hasOwn(obj1, key) && value2 !== undefined) {
+      } else if (!Object.hasOwn(obj1, key) && value2 !== undefined) {
         diff.added.push({ key, value: value2 })
-      }
-      else if (
+      } else if (
         typeof value1 === 'object' &&
         typeof value2 === 'object' &&
         value1 !== null &&
         value2 !== null
       ) {
         buildDiff(value1, value2, fullKey)
-      }
-      else if (value1 !== value2) {
+      } else if (value1 !== value2) {
         diff.updated.push({ key, from: value1, to: value2 })
-      }
-      else {
+      } else {
         diff.unchanged.push({ key, value: value2 })
       }
     })
