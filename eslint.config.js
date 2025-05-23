@@ -24,7 +24,7 @@ export default [
     },
     rules: {
       'no-unused-expressions': 'off',
-    },
+    }
   },
   {
     files: ['**/__tests__/**/*.{js,mjs,cjs}', '**/?(*.)+(spec|test).{js,mjs,cjs}'],
