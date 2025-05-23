@@ -11,8 +11,9 @@ export default [
       'prettier': pluginPrettier,
     },
     rules: {
+      
       'prettier/prettier': 'error',
-
+      '@stylistic/operator-linebreak': 'off',
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/eol-last': ['error', 'always'],

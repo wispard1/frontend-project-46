@@ -12,12 +12,12 @@ const stylish = (obj1, obj2, depth = 0) => {
     if (value === null) return 'null'
     if (value === '') return ''
 
-    if (typeof value === 'object' 
-      && value !== null) {
+    if (typeof value === 'object' &&
+       value !== null) {
       const nestedKeys = Object.keys(value)
       if (nestedKeys.length === 0) return '{}'
 
-      const nestedDiff = nestedKeys.map(key => {
+      const nestedDiff = nestedKeys.map((key) => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
         return `${' '.repeat(
@@ -31,15 +31,15 @@ const stylish = (obj1, obj2, depth = 0) => {
     return String(value)
   }
 
-  const diff = keys.flatMap(key => {
+  const diff = keys.flatMap((key) => {
     const value1 = obj1[key]
     const value2 = obj2[key]
 
     if (
-      typeof value1 === 'object' 
-      && value1 !== null
-      && typeof value2 === 'object' 
-      && value2 !== null
+      typeof value1 === 'object' &&
+      value1 !== null &&
+      typeof value2 === 'object' &&
+      value2 !== null
     ) {
       const nestedDiff = stylish(value1, value2, depth + 1)
 
@@ -47,10 +47,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     }
 
     if (
-      typeof value1 === 'object' 
-      && value1 !== null 
-      && typeof value2 !== 'object' 
-      && value2 !== undefined
+      typeof value1 === 'object' &&
+      value1 !== null &&
+      typeof value2 !== 'object' &&
+      value2 !== undefined
     ) {
       const nestedDiff = formatValue(value1, depth)
 
@@ -62,10 +62,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     }
 
     if (
-      typeof value2 === 'object' 
-      && value2 !== null 
-      && typeof value1 !== 'object' 
-      && value1 !== undefined
+      typeof value2 === 'object' &&
+      value2 !== null &&
+      typeof value1 !== 'object' &&
+      value1 !== undefined
     ) {
       const nestedDiff = formatValue(value2, depth)
 
@@ -76,12 +76,12 @@ const stylish = (obj1, obj2, depth = 0) => {
       ]
     }
 
-    if (!Object.hasOwn(obj2, key) 
-      && value1 !== undefined) {
+    if (!Object.hasOwn(obj2, key) &&
+     value1 !== undefined) {
       return `${changeIndent}- ${key}: ${formatValue(value1, depth)}`
     }
-    if (!Object.hasOwn(obj1, key) 
-      && value2 !== undefined) {
+    if (!Object.hasOwn(obj1, key) &&
+     value2 !== undefined) {
       return `${changeIndent}+ ${key}: ${formatValue(value2, depth)}`
     }
     if (value1 !== value2) {

@@ -1,7 +1,10 @@
 {
-  "editor.formatOnSave": true,
-  "eslint.enable": true,
-  "eslint.run": "onSave",
-  "eslint.format.enable": true,
-  "prettier.requireConfig": true
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 80,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "auto"
 }
