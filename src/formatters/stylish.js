@@ -16,7 +16,7 @@ const stylish = (obj1, obj2, depth = 0) => {
       const nestedKeys = Object.keys(value)
       if (nestedKeys.length === 0) return '{}'
 
-      const nestedDiff = nestedKeys.map((key) => {
+      const nestedDiff = nestedKeys.map(key => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
         return `${' '.repeat(
@@ -30,7 +30,7 @@ const stylish = (obj1, obj2, depth = 0) => {
     return String(value)
   }
 
-  const diff = keys.flatMap((key) => {
+  const diff = keys.flatMap(key => {
     const value1 = obj1[key]
     const value2 = obj2[key]
 
