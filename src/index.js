@@ -3,7 +3,7 @@ import fs from 'fs';
 import parser from './parser.js';
 import formatData from './formatters/index.js';
 
-export default function gendiff(filepath1, filepath2, formatName = 'stylish') {
+export default function genDiff(filepath1, filepath2, formatName = 'stylish') {
   const ext1 = path.extname(filepath1).slice(1);
   const ext2 = path.extname(filepath2).slice(1);
 
