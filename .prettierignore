@@ -1,9 +1,8 @@
-# .prettierignore
 __fixtures__
 *.txt
 *.md
 *.json
 node_modules
 package-lock.json
-docker-compose.yml
 Dockerfile
+docker-compose.yml

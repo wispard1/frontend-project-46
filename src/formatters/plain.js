@@ -27,10 +27,10 @@ const plain = (obj1, obj2, ancestors = []) => {
     const path = buildPath(key, ancestors)
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 === 'object' &&
-      value2 !== null
+      typeof value1 === 'object' 
+      && value1 !== null 
+      && typeof value2 === 'object'
+      && value2 !== null
     ) {
       return plain(
         value1,
@@ -39,13 +39,13 @@ const plain = (obj1, obj2, ancestors = []) => {
       )
     }
 
-    if (!Object.hasOwn(obj2, key) &&
-     value1 !== undefined) {
+    if (!Object.hasOwn(obj2, key) 
+      && value1 !== undefined) {
       return `Property '${path}' was removed`
     }
 
-    if (!Object.hasOwn(obj1, key) && 
-    value2 !== undefined) {
+    if (!Object.hasOwn(obj1, key) 
+      && value2 !== undefined) {
       return `Property '${path}' was added with value: ${formatValue(value2)}`
     }
 

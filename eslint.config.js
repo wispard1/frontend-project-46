@@ -7,11 +7,10 @@ export default [
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       '@stylistic': stylistic,
-      'jest': pluginJest,
-      'prettier': pluginPrettier,
+      jest: pluginJest,
+      prettier: pluginPrettier,
     },
     rules: {
-      
       'prettier/prettier': 'error',
       '@stylistic/operator-linebreak': 'off',
       '@stylistic/semi': ['error', 'never'],
