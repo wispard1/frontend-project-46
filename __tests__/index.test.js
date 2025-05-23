@@ -51,7 +51,7 @@ describe('genDiff', () => {
     const filepath1 = getFixturePath('file1.json')
     const filepath2 = getFixturePath('file2.json')
     expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(
-      expectedJson,
+      expectedJson
     )
   })
 
@@ -59,7 +59,7 @@ describe('genDiff', () => {
     const filepath1 = getFixturePath('file1.json')
     const filepath2 = getFixturePath('file2.json')
     expect(() => genDiff(filepath1, filepath2, 'unknown')).toThrow(
-      'Unknown format: unknown',
+      'Unknown format: unknown'
     )
   })
 })

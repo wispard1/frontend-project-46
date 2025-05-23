@@ -1,7 +1,7 @@
 const stylish = (obj1, obj2, depth = 0) => {
-  const keys = [
-    ...new Set([...Object.keys(obj1), ...Object.keys(obj2)]),
-  ].sort((a, b) => a.localeCompare(b))
+  const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
+    (a, b) => a.localeCompare(b)
+  )
 
   const space = 4
   const indent = ' '.repeat(depth * space)
@@ -20,11 +20,11 @@ const stylish = (obj1, obj2, depth = 0) => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
         return `${' '.repeat(
-          (currentDepth + 1) * space + 4,
+          (currentDepth + 1) * space + 4
         )}${key}: ${nestedValue}`
       })
       return `{\n${nestedDiff.join('\n')}\n${' '.repeat(
-        (currentDepth + 1) * space,
+        (currentDepth + 1) * space
       )}}`
     }
     return String(value)

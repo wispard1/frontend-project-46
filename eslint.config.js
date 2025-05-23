@@ -1,20 +1,19 @@
 import pluginJest from 'eslint-plugin-jest'
 import stylistic from '@stylistic/eslint-plugin'
+import pluginPrettier from 'eslint-plugin-prettier'
 
 export default [
   {
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       '@stylistic': stylistic,
-      'jest': pluginJest,
+      jest: pluginJest,
+      prettier: pluginPrettier,
     },
     rules: {
-      // Стилевые правила
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/arrow-parens': ['error', 'always'],
       '@stylistic/brace-style': ['error', 'stroustrup'],
       '@stylistic/eol-last': ['error', 'always'],
-      '@stylistic/comma-dangle': ['error', 'always-multiline'],
       '@stylistic/indent': ['error', 2],
       'no-unused-expressions': 'off',
       'jest/no-disabled-tests': 'warn',

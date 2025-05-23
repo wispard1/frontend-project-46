@@ -1,10 +1,10 @@
 {
   "semi": false,
   "singleQuote": true,
-  "@stylistic/comma-dangle": ["error", "always-multiline"],
+  "trailingComma": "es5",
   "printWidth": 80,
   "tabWidth": 2,
   "bracketSpacing": true,
-  "@stylistic/arrow-parens": ["error", "always"],
+  "arrowParens": "always",
   "endOfLine": "auto"
 }
