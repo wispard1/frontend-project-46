@@ -1,1 +1,1 @@
-export { default as gendiff } from './src/index.js'
+export { default } from './src/index.js';
