@@ -7,8 +7,8 @@ export default [
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       '@stylistic': stylistic,
-      jest: pluginJest,
-      prettier: pluginPrettier,
+      'jest': pluginJest,
+      'prettier': pluginPrettier,
     },
     rules: {
       '@stylistic/semi': ['error', 'never'],
