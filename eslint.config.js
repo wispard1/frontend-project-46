@@ -5,7 +5,17 @@ import globals from 'globals'
 
 export default [
   {
-    ignores: ['**/node_modules/**', 'coverage/**'],
+    ignores: [
+      '**/node_modules/**',
+      'coverage/**',
+      '__fixtures__/**',
+      'reports/**',
+      '**/*.yml',
+      '**/*.md',
+      '**/*.lock',
+      '**/.git',
+      '**/.github',
+    ],
   },
   js.configs.recommended,
   {
@@ -27,17 +37,17 @@ export default [
       'no-undef': 'error',
       'no-unused-expressions': 'off',
 
-      '@stylistic/semi': ['error', 'never'],       // ❌ Точки с запятой не нужны
-      '@stylistic/no-extra-semi': 'error',         // 🔍 Ловим лишние точки с запятой
-      '@stylistic/arrow-parens': ['error', 'always'], // 📦 Скобки вокруг аргументов стрелочных функций
-      '@stylistic/comma-dangle': ['error', 'only-multiline'], // 📝 Запятые только в многострочных объектах
-      '@stylistic/operator-linebreak': ['error', 'before'], // ⬆ Перенос операторов на новую строку
-      '@stylistic/eol-last': ['error', 'always'],  // 📄 Нужна пустая строка в конце файла
-      '@stylistic/indent': ['error', 2],           // 💡 Отступы по 2 пробела
-      '@stylistic/no-trailing-spaces': ['error'],  // 🧹 Не должно быть пробелов в конце строки
-      '@stylistic/spaced-comment': ['error', 'always'], // 💬 Пробел после //
-      '@stylistic/quote-props': ['error', 'as-needed'], // 📝 Кавычки только при необходимости
-      '@stylistic/brace-style': ['error', 'stroustrup'], // 🔷 Фигурные скобки на новой строке
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/no-extra-semi': 'error',
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: false }],
+      '@stylistic/quote-props': ['error', 'as-needed'],
+      '@stylistic/operator-linebreak': 'off',
+      '@stylistic/eol-last': ['error', 'always'],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/no-trailing-spaces': ['error'],
+      '@stylistic/spaced-comment': ['error', 'always'],
+      '@stylistic/no-multi-spaces': 'off',
     },
   },
   {
