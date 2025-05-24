@@ -11,7 +11,7 @@ const json = (obj1, obj2) => {
       (a, b) => a.localeCompare(b),
     )
 
-    keys.forEach(key => {
+    keys.forEach((key) => {
       const value1 = obj1 ? obj1[key] : undefined
       const value2 = obj2 ? obj2[key] : undefined
       const fullKey = prefix ? `${prefix}.${key}` : key

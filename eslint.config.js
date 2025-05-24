@@ -30,7 +30,7 @@ export default [
     },
     plugins: {
       '@stylistic': stylistic,
-      jest: pluginJest,
+      'jest': pluginJest,
     },
     rules: {
       'no-unused-vars': 'error',
@@ -41,7 +41,7 @@ export default [
       '@stylistic/no-extra-semi': 'error',
       '@stylistic/arrow-parens': ['error', 'as-needed'],
       '@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: false }],
-      '@stylistic/quote-props': ['error', 'as-needed'],
+      '@stylistic/quote-props': ['error', 'always'],
       '@stylistic/operator-linebreak': 'off',
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
