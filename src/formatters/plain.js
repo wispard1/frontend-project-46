@@ -18,7 +18,7 @@ const plain = (obj1, obj2, ancestors = []) => {
   }
 
   const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-    (a, b) => a.localeCompare(b)
+    (a, b) => a.localeCompare(b),
   )
 
   const lines = keys.flatMap((key) => {
@@ -27,15 +27,15 @@ const plain = (obj1, obj2, ancestors = []) => {
     const path = buildPath(key, ancestors)
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 === 'object' &&
-      value2 !== null
+      typeof value1 === 'object'
+      && value1 !== null
+      && typeof value2 === 'object'
+      && value2 !== null
     ) {
       return plain(
         value1,
         value2,
-        [...ancestors, key].filter((line) => line !== '')
+        [...ancestors, key].filter((line) => line !== ''),
       )
     }
 

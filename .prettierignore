@@ -1,8 +1,0 @@
-__fixtures__
-*.txt
-*.md
-*.json
-node_modules
-package-lock.json
-Dockerfile
-docker-compose.yml

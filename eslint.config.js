@@ -1,8 +1,6 @@
-import pluginJest from 'eslint-plugin-jest'
 import js from '@eslint/js'
+import pluginJest from 'eslint-plugin-jest'
 import stylistic from '@stylistic/eslint-plugin'
-import prettier from 'eslint-plugin-prettier'
-import prettierConfig from 'eslint-config-prettier'
 import globals from 'globals'
 
 export default [
@@ -10,7 +8,6 @@ export default [
     ignores: ['**/node_modules/**', 'coverage/**'],
   },
   js.configs.recommended,
-  prettierConfig,
   {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
@@ -24,41 +21,28 @@ export default [
     plugins: {
       '@stylistic': stylistic,
       jest: pluginJest,
-      prettier,
     },
     rules: {
       'no-unused-vars': 'error',
+      'no-undef': 'error',
+      'no-unused-expressions': 'off',
+
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/arrow-parens': ['error', 'always'],
-      '@stylistic/brace-style': 'off',
+      '@stylistic/no-extra-semi': 'error',
+
       '@stylistic/eol-last': ['error', 'always'],
-      '@stylistic/comma-dangle': ['error', 'only-multiline'],
       '@stylistic/indent': ['error', 2],
-      '@stylistic/quote-props': ['error', 'as-needed'],
       '@stylistic/no-trailing-spaces': ['error'],
       '@stylistic/spaced-comment': ['error', 'always'],
-      'no-unused-expressions': 'off',
-      'no-undef': 'error',
-      'prettier/prettier': [
-        'error',
-        {
-          semi: false,
-          singleQuote: true,
-          trailingComma: 'es5',
-          printWidth: 80,
-          tabWidth: 2,
-          bracketSpacing: true,
-          arrowParens: 'always',
-          endOfLine: 'auto',
-        },
-      ],
+      '@stylistic/comma-dangle': ['error', 'only-multiline'],
+      '@stylistic/arrow-parens': ['error', 'always'],
+      '@stylistic/quote-props': ['error', 'as-needed'],
+      '@stylistic/brace-style': ['error'],
+      '@stylistic/operator-linebreak': ['error', 'before'],
     },
   },
   {
-    files: [
-      '**/__tests__/**/*.{js,mjs,cjs}',
-      '**/?(*.)+(spec|test).{js,mjs,cjs}',
-    ],
+    files: ['**/__tests__/**/*.{js,mjs,cjs}', '**/?(*.)+(spec|test).{js,mjs,cjs}'],
     rules: {
       'jest/no-disabled-tests': 'warn',
       'jest/no-focused-tests': 'error',

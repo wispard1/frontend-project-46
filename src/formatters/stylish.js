@@ -1,6 +1,6 @@
 const stylish = (obj1, obj2, depth = 0) => {
   const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-    (a, b) => a.localeCompare(b)
+    (a, b) => a.localeCompare(b),
   )
 
   const space = 4
@@ -20,13 +20,15 @@ const stylish = (obj1, obj2, depth = 0) => {
         const nestedValue = formatValue(value[key], currentDepth + 1)
 
         return `${' '.repeat(
-          (currentDepth + 1) * space + 4
+          (currentDepth + 1) * space + 4,
         )}${key}: ${nestedValue}`
       })
+
       return `{\n${nestedDiff.join('\n')}\n${' '.repeat(
-        (currentDepth + 1) * space
+        (currentDepth + 1) * space,
       )}}`
     }
+
     return String(value)
   }
 
@@ -35,10 +37,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     const value2 = obj2[key]
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 === 'object' &&
-      value2 !== null
+      typeof value1 === 'object'
+      && value1 !== null
+      && typeof value2 === 'object'
+      && value2 !== null
     ) {
       const nestedDiff = stylish(value1, value2, depth + 1)
 
@@ -46,10 +48,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     }
 
     if (
-      typeof value1 === 'object' &&
-      value1 !== null &&
-      typeof value2 !== 'object' &&
-      value2 !== undefined
+      typeof value1 === 'object'
+      && value1 !== null
+      && typeof value2 !== 'object'
+      && value2 !== undefined
     ) {
       const nestedDiff = formatValue(value1, depth)
 
@@ -60,10 +62,10 @@ const stylish = (obj1, obj2, depth = 0) => {
     }
 
     if (
-      typeof value2 === 'object' &&
-      value2 !== null &&
-      typeof value1 !== 'object' &&
-      value1 !== undefined
+      typeof value2 === 'object'
+      && value2 !== null
+      && typeof value1 !== 'object'
+      && value1 !== undefined
     ) {
       const nestedDiff = formatValue(value2, depth)
 
