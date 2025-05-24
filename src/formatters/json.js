@@ -3,12 +3,12 @@ const json = (obj1, obj2) => {
     added: [],
     removed: [],
     updated: [],
-    unchanged: []
+    unchanged: [],
   }
 
   const buildDiff = (obj1, obj2, prefix = '') => {
     const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
-      (a, b) => a.localeCompare(b)
+      (a, b) => a.localeCompare(b),
     )
 
     keys.forEach(key => {
