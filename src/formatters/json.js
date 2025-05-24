@@ -3,11 +3,13 @@ const json = (obj1, obj2) => {
     added: [],
     removed: [],
     updated: [],
-    unchanged: [],
+    unchanged: []
   }
 
   const buildDiff = (obj1, obj2, prefix = '') => {
-    const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort((a, b) => a.localeCompare(b))
+    const keys = [...new Set([...Object.keys(obj1), ...Object.keys(obj2)])].sort(
+      (a, b) => a.localeCompare(b)
+    )
 
     keys.forEach((key) => {
       const value1 = obj1 ? obj1[key] : undefined
@@ -20,7 +22,12 @@ const json = (obj1, obj2) => {
       else if (!Object.hasOwn(obj1, key) && value2 !== undefined) {
         diff.added.push({ key, value: value2 })
       }
-      else if (typeof value1 === 'object' && typeof value2 === 'object' && value1 !== null && value2 !== null) {
+      else if (
+        typeof value1 === 'object'
+        && typeof value2 === 'object'
+        && value1 !== null
+        && value2 !== null
+      ) {
         buildDiff(value1, value2, fullKey)
       }
       else if (value1 !== value2) {

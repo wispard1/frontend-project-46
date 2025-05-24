@@ -10,7 +10,7 @@
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=lcov",
-    "lint": "eslint --config eslint.config.js . --fix",
+    "lint": "eslint . --ext .js --fix",
     "lint:fix": "eslint --config eslint.config.js . --fix",
     "gendiff-json": "gendiff __fixtures__/file1.json __fixtures__/file2.json",
     "gendiff-yml": "gendiff __fixtures__/file1.yml __fixtures__/file2.yml"
@@ -33,7 +33,6 @@
     "@eslint/js": "^9.27.0",
     "@stylistic/eslint-plugin": "^4.3.0",
     "eslint": "^9.27.0",
-    "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-stylistic": "^0.0.0-0",
     "globals": "^16.1.0",
