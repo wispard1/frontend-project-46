@@ -26,19 +26,12 @@ export default [
       'no-unused-vars': 'error',
       'no-undef': 'error',
       'no-unused-expressions': 'off',
-
       '@stylistic/semi': ['error', 'never'],
-      '@stylistic/no-extra-semi': 'error',
-
-      '@stylistic/eol-last': ['error', 'always'],
-      '@stylistic/indent': ['error', 2],
-      '@stylistic/no-trailing-spaces': ['error'],
-      '@stylistic/spaced-comment': ['error', 'always'],
-      '@stylistic/comma-dangle': ['error', 'only-multiline'],
-      '@stylistic/arrow-parens': ['error', 'always'],
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: false }],
       '@stylistic/quote-props': ['error', 'as-needed'],
-      '@stylistic/brace-style': ['error'],
       '@stylistic/operator-linebreak': ['error', 'before'],
+      '@stylistic/comma-dangle': ['error', 'only-multiline'],
     },
   },
   {
