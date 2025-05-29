@@ -2,14 +2,14 @@ import plain from './plain.js'
 import stylish from './stylish.js'
 import json from './json.js'
 
-const formatData = (obj1, obj2, format = 'stylish') => {
+const formatData = (ast, format = 'stylish') => {
   switch (format) {
     case 'stylish':
-      return stylish(obj1, obj2)
+      return stylish(ast)
     case 'plain':
-      return plain(obj1, obj2)
+      return plain(ast)
     case 'json':
-      return json(obj1, obj2)
+      return json(ast)
     default:
       throw new Error(`Unknown format: ${format}`)
   }

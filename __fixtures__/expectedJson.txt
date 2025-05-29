@@ -1,86 +1,24 @@
 {
   "added": [
-    {
-      "key": "follow",
-      "value": false
-    },
-    {
-      "key": "setting4",
-      "value": "blah blah"
-    },
-    {
-      "key": "setting5",
-      "value": {
-        "key5": "value5"
-      }
-    },
-    {
-      "key": "ops",
-      "value": "vops"
-    },
-    {
-      "key": "group3",
-      "value": {
-        "deep": {
-          "id": {
-            "number": 45
-          }
-        },
-        "fee": 100500
-      }
-    }
+    { "key": "follow", "value": false },
+    { "key": "setting4", "value": "blah blah" },
+    { "key": "setting5", "value": { "key5": "value5" } },
+    { "key": "ops", "value": "vops" },
+    { "key": "group3", "value": { "deep": { "id": { "number": 45 } }, "fee": 100500 } }
   ],
   "removed": [
-    {
-      "key": "setting2",
-      "value": 200
-    },
-    {
-      "key": "group2",
-      "value": {
-        "abc": 12345,
-        "deep": {
-          "id": 45
-        }
-      }
-    }
-  ],
-  "updated": [
-    {
-      "key": "setting3",
-      "from": true,
-      "to": null
-    },
-    {
-      "key": "wow",
-      "from": "",
-      "to": "so much"
-    },
-    {
-      "key": "baz",
-      "from": "bas",
-      "to": "bars"
-    },
-    {
-      "key": "nest",
-      "from": {
-        "key": "value"
-      },
-      "to": "str"
-    }
+    { "key": "setting2", "value": 200 },
+    { "key": "group2", "value": { "abc": 12345, "deep": { "id": 45 } } }
   ],
   "unchanged": [
-    {
-      "key": "setting1",
-      "value": "Value 1"
-    },
-    {
-      "key": "key",
-      "value": "value"
-    },
-    {
-      "key": "foo",
-      "value": "bar"
-    }
+    { "key": "setting1", "value": "Value 1" },
+    { "key": "key", "value": "value" },
+    { "key": "foo", "value": "bar" }
+  ],
+  "updated": [
+    { "key": "setting3", "from": true, "to": null },
+    { "key": "wow", "from": "", "to": "so much" },
+    { "key": "baz", "from": "bas", "to": "bars" },
+    { "key": "nest", "from": { "key": "value" }, "to": "str" }
   ]
 }

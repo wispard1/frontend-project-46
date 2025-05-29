@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import parser from './parser.js'
 import formatData from './formatters/index.js'
+import genAst from './genAst.js'
 
 export default function genDiff(filepath1, filepath2, formatName = 'stylish') {
   const ext1 = path.extname(filepath1).slice(1)
@@ -13,5 +14,7 @@ export default function genDiff(filepath1, filepath2, formatName = 'stylish') {
   const parsed1 = parser(content1, ext1)
   const parsed2 = parser(content2, ext2)
 
-  return formatData(parsed1, parsed2, formatName)
+  const ast = genAst(parsed1, parsed2)
+
+  return formatData(ast, formatName)
 }

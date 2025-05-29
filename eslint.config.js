@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import js from '@eslint/js'
 import pluginJest from 'eslint-plugin-jest'
 import stylistic from '@stylistic/eslint-plugin'
@@ -14,8 +16,8 @@ export default [
       '**/*.md',
       '**/*.lock',
       '**/.git',
-      '**/.github',
-    ],
+      '**/.github'
+    ]
   },
   js.configs.recommended,
   {
@@ -25,12 +27,12 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.node,
-        ...globals.vitest,
-      },
+        ...globals.vitest
+      }
     },
     plugins: {
       '@stylistic': stylistic,
-      'jest': pluginJest,
+      jest: pluginJest
     },
     rules: {
       'no-unused-vars': 'error',
@@ -40,7 +42,11 @@ export default [
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/no-extra-semi': 'error',
       '@stylistic/arrow-parens': ['error', 'as-needed'],
-      '@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: false }],
+      // '@stylistic/brace-style': [
+      //   'error',
+      //   'stroustrup',
+      //   { allowSingleLine: false }
+      // ],
       '@stylistic/quote-props': ['error', 'always'],
       '@stylistic/operator-linebreak': 'off',
       '@stylistic/eol-last': ['error', 'always'],
@@ -48,16 +54,20 @@ export default [
       '@stylistic/no-trailing-spaces': ['error'],
       '@stylistic/spaced-comment': ['error', 'always'],
       '@stylistic/no-multi-spaces': 'off',
-    },
+      '@stylistic/quote-props': ['error', 'as-needed']
+    }
   },
   {
-    files: ['**/__tests__/**/*.{js,mjs,cjs}', '**/?(*.)+(spec|test).{js,mjs,cjs}'],
+    files: [
+      '**/__tests__/**/*.{js,mjs,cjs}',
+      '**/?(*.)+(spec|test).{js,mjs,cjs}'
+    ],
     rules: {
       'jest/no-disabled-tests': 'warn',
       'jest/no-focused-tests': 'error',
       'jest/no-identical-title': 'error',
       'jest/prefer-to-have-length': 'warn',
-      'jest/valid-expect': 'error',
-    },
-  },
+      'jest/valid-expect': 'error'
+    }
+  }
 ]
