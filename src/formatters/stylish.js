@@ -27,8 +27,7 @@ const stylish = (ast, depth = 1) => {
 
     const formatLine = (prefix, val) => {
       const rendered = stringify(val, depth)
-      const spacer = rendered === '' ? '' : ' '
-      return `${currentIndent.slice(0, -2)}${prefix}${key}:${spacer}${rendered}`
+      return `${currentIndent.slice(0, -2)}${prefix}${key}: ${rendered}`
     }
 
     switch (type) {
