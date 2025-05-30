@@ -12,7 +12,6 @@
 Чтобы установить и запустить проект локально, следуйте этим шагам:
 1. **Клонируйте репозиторий**<br>
 `git clone https://github.com/wispard1/frontend-project-46.git`<br>
-
 `cd frontend-project-46`
 
 2. **Установите зависимости**
