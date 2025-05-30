@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
 function isComplexValue(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-const formatValue = value => {
+const formatValue = (value) => {
   if (value === undefined) return 'undefined'
   if (isComplexValue(value)) return '[complex value]'
   if (typeof value === 'string') return `'${value}'`
@@ -31,16 +30,16 @@ function walk(astNode, ancestors = []) {
       case 'added':
         lines.push(
           `Property '${path}' was added with value: ${formatValue(
-            node.value ?? node.newValue
-          )}`
+            node.value ?? node.newValue,
+          )}`,
         )
         break
 
       case 'changed':
         lines.push(
           `Property '${path}' was updated. From ${formatValue(
-            node.oldValue
-          )} to ${formatValue(node.newValue)}`
+            node.oldValue,
+          )} to ${formatValue(node.newValue)}`,
         )
         break
 

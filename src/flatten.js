@@ -11,13 +11,17 @@ export default function flatten(ast) {
       Object.entries(node.children).forEach(([key, child]) => {
         traverse(child, key)
       })
-    } else if (node.type === 'added') {
+    }
+    else if (node.type === 'added') {
       result.added.push({ key: parentKey, value: node.value })
-    } else if (node.type === 'removed') {
+    }
+    else if (node.type === 'removed') {
       result.removed.push({ key: parentKey, value: node.value })
-    } else if (node.type === 'unchanged') {
+    }
+    else if (node.type === 'unchanged') {
       result.unchanged.push({ key: parentKey, value: node.value })
-    } else if (node.type === 'changed') {
+    }
+    else if (node.type === 'changed') {
       result.updated.push({
         key: parentKey,
         from: node.oldValue,
