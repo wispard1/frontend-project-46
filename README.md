@@ -15,10 +15,10 @@
 `cd frontend-project-46`
 
 2. **Установите зависимости**<br>
-npm install
+`npm install`
 
 3. **Запустите тесты**<br>
-npm run test
+`npm run test`
 
 4. **Используйте CLI** (опционально)
 
