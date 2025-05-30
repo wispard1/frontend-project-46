@@ -1,75 +1,53 @@
-const indentSize = 2
+const stringify = (value, depth) => {
+  if (value === '') return ''
 
-function getIndent(depth) {
-  return ' '.repeat(indentSize * depth)
-}
-
-function formatValue(value, depth) {
-  if (value === null) return 'null'
-  if (typeof value !== 'object') return String(value)
-  if (Array.isArray(value)) {
-    if (value.length === 0) return '[]'
-    const items = value.map(
-      item => `${getIndent(depth + 1)}${formatValue(item, depth + 1)}`
-    )
-    return `[\n${items.join('\n')}\n${getIndent(depth)}]`
+  if (typeof value !== 'object' || value === null) {
+    return value === null ? 'null' : String(value)
   }
 
-  const keys = Object.keys(value).sort()
-  if (keys.length === 0) return '{}'
-  const lines = keys.map(
-    key =>
-      `${getIndent(depth + 1)}${key}: ${formatValue(value[key], depth + 1)}`
-  )
-  return `{\n${lines.join('\n')}\n${getIndent(depth)}}`
+  const indent = '    '.repeat(depth + 1)
+  const bracketIndent = '    '.repeat(depth)
+
+  const entries = Object.entries(value).map(([key, val]) => {
+    const rendered = stringify(val, depth + 1)
+    const spacer = rendered === '' ? '' : ' '
+    return `${indent}${key}:${spacer}${rendered}`
+  })
+
+  return `{\n${entries.join('\n')}\n${bracketIndent}}`
 }
 
-function walk(astNode, depth = 0) {
-  const lines = []
-  const keys = Object.keys(astNode).sort()
+const stylish = (ast, depth = 1) => {
+  const indentSize = 4
+  const currentIndent = ' '.repeat(depth * indentSize)
+  const bracketIndent = ' '.repeat((depth - 1) * indentSize)
 
-  for (const key of keys) {
-    const node = astNode[key]
-    const baseIndent = getIndent(depth + 1)
-    const signIndent = getIndent(depth + 2)
+  const lines = Object.entries(ast).flatMap(([key, node]) => {
+    const { type, value, oldValue, newValue, children } = node
 
-    switch (node.type) {
-      case 'nested':
-        lines.push(`${baseIndent}${key}: {`)
-        lines.push(walk(node.children, depth + 1))
-        lines.push(`${baseIndent}}`)
-        break
-
-      case 'added':
-        lines.push(
-          `${signIndent}+ ${key}: ${formatValue(node.value, depth + 2)}`
-        )
-        break
-
-      case 'removed':
-        lines.push(
-          `${signIndent}- ${key}: ${formatValue(node.value, depth + 2)}`
-        )
-        break
-
-      case 'changed':
-        lines.push(
-          `${signIndent}- ${key}: ${formatValue(node.oldValue, depth + 2)}`
-        )
-        lines.push(
-          `${signIndent}+ ${key}: ${formatValue(node.newValue, depth + 2)}`
-        )
-        break
-
-      case 'unchanged':
-        lines.push(`${baseIndent}${key}: ${formatValue(node.value, depth + 2)}`)
-        break
+    const formatLine = (prefix, val) => {
+      const rendered = stringify(val, depth)
+      const spacer = rendered === '' ? '' : ' '
+      return `${currentIndent.slice(0, -2)}${prefix}${key}:${spacer}${rendered}`
     }
-  }
 
-  return lines.join('\n')
+    switch (type) {
+      case 'added':
+        return formatLine('+ ', value)
+      case 'removed':
+        return formatLine('- ', value)
+      case 'unchanged':
+        return `${currentIndent}${key}: ${stringify(value, depth)}`
+      case 'changed':
+        return [formatLine('- ', oldValue), formatLine('+ ', newValue)]
+      case 'nested':
+        return `${currentIndent}${key}: ${stylish(children, depth + 1)}`
+      default:
+        throw new Error(`Unknown type: ${type}`)
+    }
+  })
+
+  return `{\n${lines.join('\n')}\n${bracketIndent}}`
 }
 
-export default function stylish(ast) {
-  return `{\n${walk(ast, 0)}\n}`
-}
+export default stylish
