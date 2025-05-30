@@ -8,14 +8,38 @@
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wispard1_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wispard1_frontend-project-46)
 
+### Установка и запуск проекта
+Чтобы установить и запустить проект локально, следуйте этим шагам:
+1. Клонируйте репозиторий
+git clone https://github.com/wispard1/frontend-project-46.git 
+cd frontend-project-46
+
+2. Установите зависимости
+npm install
+
+3. Запустите тесты
+npm run test
+
+4. Используйте CLI (опционально)
+
+Чтобы использовать команду gendiff, необходимо прописать npm link
+
+По умолчанию (формат stylish)
+gendiff __fixtures__/file1.json __fixtures__/file2.json
+
+С указанием формата:
+gendiff --format json __fixtures__/file1.json __fixtures__/file2.json
+или
+gendiff --format plain __fixtures__/file1.json __fixtures__/file2.json
+
 ### Рекурсивное сравнение (JSON и YAML)
 
-https://asciinema.org/a/3blV8WNfk413Nl2YWNpVyjh3F
-
-### Плоский формат
-
-https://asciinema.org/a/WQpwXGxbue8MuTo11sgkfFbAm
+https://asciinema.org/a/XOQAGJvdySFoMQyCyfnCkNLL2
 
 ### Вывод в json
 
-https://asciinema.org/a/SgpKa9B1LOcFQSvumXsNyO8MG
+https://asciinema.org/a/Rj4Zuf3eFv5gN9DH2ahm0CJBv
+
+### Плоский формат (plain)
+
+https://asciinema.org/a/psU2MrSj22hpvd1uKeAqZY5f6
