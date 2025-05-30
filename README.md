@@ -12,6 +12,7 @@
 Чтобы установить и запустить проект локально, следуйте этим шагам:
 1. **Клонируйте репозиторий**<br>
 `git clone https://github.com/wispard1/frontend-project-46.git`<br>
+
 `cd frontend-project-46`
 
 2. **Установите зависимости**
@@ -24,7 +25,7 @@ npm run test
 
 Чтобы использовать команду gendiff, необходимо прописать `npm link`
 
-**По умолчанию (формат stylish)**
+**По умолчанию (формат stylish)**<br>
 `gendiff __fixtures__/file1.json __fixtures__/file2.json`
 
 **С указанием формата:**<br>
