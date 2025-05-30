@@ -10,24 +10,24 @@
 
 ### Установка и запуск проекта
 Чтобы установить и запустить проект локально, следуйте этим шагам:
-1. Клонируйте репозиторий
+1. **Клонируйте репозиторий**<br>
 `git clone https://github.com/wispard1/frontend-project-46.git`<br>
 `cd frontend-project-46`
 
-2. Установите зависимости
+2. **Установите зависимости**
 npm install
 
-3. Запустите тесты
+3. **Запустите тесты**
 npm run test
 
-4. Используйте CLI (опционально)
+4. **Используйте CLI** (опционально)
 
-Чтобы использовать команду gendiff, необходимо прописать npm link
+Чтобы использовать команду gendiff, необходимо прописать `npm link`
 
-По умолчанию (формат stylish)
-gendiff __fixtures__/file1.json __fixtures__/file2.json
+**По умолчанию (формат stylish)**
+`gendiff __fixtures__/file1.json __fixtures__/file2.json`
 
-С указанием формата:
+**С указанием формата:**<br>
 `gendiff --format json __fixtures__/file1.json __fixtures__/file2.json`<br>
 или<br>
 `gendiff --format plain __fixtures__/file1.json __fixtures__/file2.json`
