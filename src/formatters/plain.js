@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 function isComplexValue(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
@@ -47,6 +48,7 @@ function walk(astNode, ancestors = []) {
         break
     }
   }
+
   return lines.flat().join('\n')
 }
 
