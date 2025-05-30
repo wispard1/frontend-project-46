@@ -14,10 +14,10 @@
 `git clone https://github.com/wispard1/frontend-project-46.git`<br>
 `cd frontend-project-46`
 
-2. **Установите зависимости**
+2. **Установите зависимости**<br>
 npm install
 
-3. **Запустите тесты**
+3. **Запустите тесты**<br>
 npm run test
 
 4. **Используйте CLI** (опционально)
