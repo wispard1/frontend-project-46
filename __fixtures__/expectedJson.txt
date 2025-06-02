@@ -1,21 +1,21 @@
 {
   "added": [
     {
-      "key": "follow",
+      "key": "common.follow",
       "value": false
     },
     {
-      "key": "setting4",
+      "key": "common.setting4",
       "value": "blah blah"
     },
     {
-      "key": "setting5",
+      "key": "common.setting5",
       "value": {
         "key5": "value5"
       }
     },
     {
-      "key": "ops",
+      "key": "common.setting6.ops",
       "value": "vops"
     },
     {
@@ -32,7 +32,7 @@
   ],
   "removed": [
     {
-      "key": "setting2",
+      "key": "common.setting2",
       "value": 200
     },
     {
@@ -45,42 +45,42 @@
       }
     }
   ],
+  "unchanged": [
+    {
+      "key": "common.setting1",
+      "value": "Value 1"
+    },
+    {
+      "key": "common.setting6.key",
+      "value": "value"
+    },
+    {
+      "key": "group1.foo",
+      "value": "bar"
+    }
+  ],
   "updated": [
     {
-      "key": "setting3",
+      "key": "common.setting3",
       "from": true,
       "to": null
     },
     {
-      "key": "wow",
+      "key": "common.setting6.doge.wow",
       "from": "",
       "to": "so much"
     },
     {
-      "key": "baz",
+      "key": "group1.baz",
       "from": "bas",
       "to": "bars"
     },
     {
-      "key": "nest",
+      "key": "group1.nest",
       "from": {
         "key": "value"
       },
       "to": "str"
-    }
-  ],
-  "unchanged": [
-    {
-      "key": "setting1",
-      "value": "Value 1"
-    },
-    {
-      "key": "key",
-      "value": "value"
-    },
-    {
-      "key": "foo",
-      "value": "bar"
     }
   ]
 }

@@ -5,7 +5,7 @@ import genDiff from '../src/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const getFixturePath = filename =>
+const getFixturePath = (filename) =>
   path.join(__dirname, '..', '__fixtures__', filename)
 
 const expectedStylish = readFileSync(
@@ -13,9 +13,7 @@ const expectedStylish = readFileSync(
   'utf-8',
 )
 const expectedPlain = readFileSync(getFixturePath('expectedPlain.txt'), 'utf-8')
-const expectedJson = JSON.parse(
-  readFileSync(getFixturePath('expectedJson.txt'), 'utf-8'),
-)
+const expectedJson = readFileSync(getFixturePath('expectedJson.txt'), 'utf-8')
 
 describe('genDiff', () => {
   test.each([
@@ -57,7 +55,14 @@ describe('genDiff', () => {
   ])('description', ({ file1, file2, format, expected }) => {
     const filepath1 = getFixturePath(file1)
     const filepath2 = getFixturePath(file2)
-    expect(genDiff(filepath1, filepath2, format)).toEqual(expected)
+
+    if (format === 'json') {
+      const actual = JSON.parse(genDiff(filepath1, filepath2, format))
+      const expectedObj = JSON.parse(expected)
+      expect(actual).toEqual(expectedObj)
+    } else {
+      expect(genDiff(filepath1, filepath2, format)).toEqual(expected)
+    }
   })
 
   test('should throw error with unknown format', () => {

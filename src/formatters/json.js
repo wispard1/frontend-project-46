@@ -7,25 +7,27 @@ export default function json(ast) {
   }
 
   function traverse(node, key, path = []) {
-    const nodeKey = key
+    const fullPath = [...path, key].join('.')
 
     if (node.type === 'nested') {
       Object.entries(node.children).forEach(([childKey, child]) => {
         traverse(child, childKey, [...path, key])
       })
+      return
     }
+
     if (node.type === 'added') {
-      result.added.push({ key: nodeKey, value: node.value })
+      result.added.push({ key: fullPath, value: node.value })
     }
     if (node.type === 'removed') {
-      result.removed.push({ key: nodeKey, value: node.value })
+      result.removed.push({ key: fullPath, value: node.value })
     }
     if (node.type === 'unchanged') {
-      result.unchanged.push({ key: nodeKey, value: node.value })
+      result.unchanged.push({ key: fullPath, value: node.value })
     }
     if (node.type === 'changed') {
       result.updated.push({
-        key: nodeKey,
+        key: fullPath,
         from: node.oldValue,
         to: node.newValue,
       })
@@ -34,5 +36,5 @@ export default function json(ast) {
 
   Object.entries(ast).forEach(([key, node]) => traverse(node, key, []))
 
-  return result
+  return JSON.stringify(result, null, 2)
 }
