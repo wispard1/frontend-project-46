@@ -2,7 +2,7 @@ function isComplexValue(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-const formatValue = (value) => {
+const formatValue = value => {
   if (value === undefined) return 'undefined'
   if (isComplexValue(value)) return '[complex value]'
   if (typeof value === 'string') return `'${value}'`
@@ -10,47 +10,40 @@ const formatValue = (value) => {
   return String(value)
 }
 
-function walk(astNode, ancestors = []) {
-  const lines = []
+const handlers = {
+  nested: (node, path) => genPlainDesc(node.children, path),
+  removed: (node, path) => [`Property '${path}' was removed`],
+  added: (node, path) => [
+    `Property '${path}' was added with value: ${formatValue(
+      node.value ?? node.newValue,
+    )}`,
+  ],
+  changed: (node, path) => [
+    `Property '${path}' was updated. From ${formatValue(
+      node.oldValue,
+    )} to ${formatValue(node.newValue)}`,
+  ],
+  unchanged: () => [],
+}
+
+function genPlainDesc(astNode, ancestors = []) {
   const keys = Object.keys(astNode).sort()
+  const lines = []
 
   for (const key of keys) {
     const node = astNode[key]
     const path = [...ancestors, key].join('.')
 
-    switch (node.type) {
-      case 'nested':
-        lines.push(walk(node.children, [...ancestors, key]))
-        break
-
-      case 'removed':
-        lines.push(`Property '${path}' was removed`)
-        break
-
-      case 'added':
-        lines.push(
-          `Property '${path}' was added with value: ${formatValue(
-            node.value ?? node.newValue,
-          )}`,
-        )
-        break
-
-      case 'changed':
-        lines.push(
-          `Property '${path}' was updated. From ${formatValue(
-            node.oldValue,
-          )} to ${formatValue(node.newValue)}`,
-        )
-        break
-
-      case 'unchanged':
-        break
+    const handler = handlers[node.type]
+    if (handler) {
+      const result = node.type === 'nested' ? handler(node, [...ancestors, key]) : handler(node, path)
+      lines.push(...result)
     }
   }
 
-  return lines.flat().join('\n')
+  return lines.flat()
 }
 
 export default function plain(ast) {
-  return walk(ast)
+  return genPlainDesc(ast).join('\n')
 }

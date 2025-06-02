@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import js from '@eslint/js'
 import pluginJest from 'eslint-plugin-jest'
 import stylistic from '@stylistic/eslint-plugin'
@@ -47,7 +45,6 @@ export default [
       //   'stroustrup',
       //   { allowSingleLine: false }
       // ],
-      '@stylistic/quote-props': ['error', 'always'],
       '@stylistic/operator-linebreak': 'off',
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
