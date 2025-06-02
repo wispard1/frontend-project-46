@@ -39,7 +39,7 @@ export default [
 
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/no-extra-semi': 'error',
-      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      // '@stylistic/arrow-parens': ['error', 'as-needed'],
       // '@stylistic/brace-style': [
       //   'error',
       //   'stroustrup',
