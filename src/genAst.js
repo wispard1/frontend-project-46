@@ -6,7 +6,7 @@ export default function genAst(obj1, obj2) {
   const sortedKeys = [...keys].sort()
 
   return Object.fromEntries(
-    sortedKeys.map(key => {
+    sortedKeys.map((key) => {
       const val1 = obj1[key]
       const val2 = obj2[key]
 

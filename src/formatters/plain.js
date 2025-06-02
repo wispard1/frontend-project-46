@@ -2,7 +2,7 @@ function isComplexValue(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-const formatValue = value => {
+const formatValue = (value) => {
   if (value === undefined) return 'undefined'
   if (isComplexValue(value)) return '[complex value]'
   if (typeof value === 'string') return `'${value}'`

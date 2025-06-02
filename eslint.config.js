@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import js from '@eslint/js'
 import pluginJest from 'eslint-plugin-jest'
 import stylistic from '@stylistic/eslint-plugin'
@@ -39,13 +41,6 @@ export default [
 
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/no-extra-semi': 'error',
-      // '@stylistic/arrow-parens': ['error', 'as-needed'],
-      // '@stylistic/brace-style': [
-      //   'error',
-      //   'stroustrup',
-      //   { allowSingleLine: false }
-      // ],
-      '@stylistic/operator-linebreak': 'off',
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/no-trailing-spaces': ['error'],
