@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import path, { dirname } from 'path'
 import { readFileSync } from 'fs'
-import genDiff from '../src/index.js'
+import genDiff from '../index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -60,7 +60,8 @@ describe('genDiff', () => {
       const actual = JSON.parse(genDiff(filepath1, filepath2, format))
       const expectedObj = JSON.parse(expected)
       expect(actual).toEqual(expectedObj)
-    } else {
+    }
+    else {
       expect(genDiff(filepath1, filepath2, format)).toEqual(expected)
     }
   })

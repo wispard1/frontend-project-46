@@ -1,65 +1,24 @@
-/* eslint-disable */
-
 import js from '@eslint/js'
-import pluginJest from 'eslint-plugin-jest'
-import stylistic from '@stylistic/eslint-plugin'
 import globals from 'globals'
+import { defineConfig } from 'eslint/config'
+import stylistic from '@stylistic/eslint-plugin'
 
-export default [
+export default defineConfig([
+  stylistic.configs.recommended,
   {
-    ignores: [
-      '**/node_modules/**',
-      'coverage/**',
-      '__fixtures__/**',
-      'reports/**',
-      '**/*.yml',
-      '**/*.md',
-      '**/*.lock',
-      '**/.git',
-      '**/.github'
-    ]
+    files: ['**/*.{js,mjs,cjs}'],
+    plugins: { js },
+    extends: ['js/recommended'],
   },
-  js.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
-      ecmaVersion: 2021,
-      sourceType: 'module',
       globals: {
-        ...globals.node,
-        ...globals.vitest
-      }
+        ...globals.browser,
+        describe: true,
+        test: true,
+        expect: true,
+      },
     },
-    plugins: {
-      '@stylistic': stylistic,
-      jest: pluginJest
-    },
-    rules: {
-      'no-unused-vars': 'error',
-      'no-undef': 'error',
-      'no-unused-expressions': 'off',
-
-      '@stylistic/semi': ['error', 'never'],
-      '@stylistic/no-extra-semi': 'error',
-      '@stylistic/eol-last': ['error', 'always'],
-      '@stylistic/indent': ['error', 2],
-      '@stylistic/no-trailing-spaces': ['error'],
-      '@stylistic/spaced-comment': ['error', 'always'],
-      '@stylistic/no-multi-spaces': 'off',
-      '@stylistic/quote-props': ['error', 'as-needed']
-    }
   },
-  {
-    files: [
-      '**/__tests__/**/*.{js,mjs,cjs}',
-      '**/?(*.)+(spec|test).{js,mjs,cjs}'
-    ],
-    rules: {
-      'jest/no-disabled-tests': 'warn',
-      'jest/no-focused-tests': 'error',
-      'jest/no-identical-title': 'error',
-      'jest/prefer-to-have-length': 'warn',
-      'jest/valid-expect': 'error'
-    }
-  }
-]
+])

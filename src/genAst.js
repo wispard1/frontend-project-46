@@ -1,4 +1,4 @@
-const isObject = (value) =>
+const isObject = value =>
   value && typeof value === 'object' && !Array.isArray(value)
 
 export default function genAst(obj1, obj2) {
