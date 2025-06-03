@@ -11,7 +11,10 @@ const formatValue = (value) => {
 }
 
 const handlers = {
-  nested: (node, path) => genPlainDesc(node.children, path),
+  nested: (node, path) => {
+    const newAncestors = path.split('.').filter(Boolean)
+    return genPlainDesc(node.children, newAncestors)
+  },
   removed: (node, path) => [`Property '${path}' was removed`],
   added: (node, path) => [
     `Property '${path}' was added with value: ${formatValue(
@@ -35,8 +38,9 @@ function genPlainDesc(astNode, ancestors = []) {
     const path = [...ancestors, key].join('.')
 
     const handler = handlers[node.type]
+
     if (handler) {
-      const result = node.type === 'nested' ? handler(node, [...ancestors, key]) : handler(node, path)
+      const result = handler(node, path)
       lines.push(...result)
     }
   }
